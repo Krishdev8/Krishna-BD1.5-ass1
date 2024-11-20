@@ -3,7 +3,7 @@ let cors = require('cors');
 // const { resolve } = require('path');
 
 let app = express();
-app.use(cors());
+app.use(cors({ origin: 'https://bd1-1.vercel.app' }));
 
 const port = 3000;
 
@@ -20,7 +20,7 @@ function calculateCartTotal(newItemPrice, cartTotal) {
 app.get('/cart-total', (req, res) => {
   let newItemPrice = parseFloat(req.query.newItemPrice);
   let cartTotal = parseFloat(req.query.cartTotal);
-  
+
   res.send(calculateCartTotal(newItemPrice, cartTotal).toString());
 });
 
