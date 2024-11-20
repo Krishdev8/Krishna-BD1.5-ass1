@@ -13,13 +13,14 @@ let taxRate = 5; //5%
 let discountPercentage = 10; //10%
 let loyaltyRate = 2; //2points per $1
 
+
 function calculateCartTotal(newItemPrice, cartTotal) {
   return newItemPrice + cartTotal;
 }
 app.get('/cart-total', (req, res) => {
   let newItemPrice = parseFloat(req.query.newItemPrice);
   let cartTotal = parseFloat(req.query.cartTotal);
-  //let result = newItemPrice + cartTotal;
+  
   res.send(calculateCartTotal(newItemPrice, cartTotal).toString());
 });
 
@@ -71,7 +72,7 @@ app.get('/shipping-cost', (req, res) => {
 });
 
 function calculateLoyaltyPoints(purchaseAmount) {
-  return purchaseAmount * 2;
+  return purchaseAmount * loyaltyRate;
 }
 app.get('/loyalty-points', (req, res) => {
   let purchaseAmount = parseFloat(req.query.purchaseAmount);
